@@ -1,7 +1,7 @@
-# Camera3D
-A Blender Addon to assist you with 3D rendering for VR/3D Screens/3D Monitors. Currently Only Supports Full-SBS Image Rendering.
+# Camera3D :frog:
+A Blender Addon to assist you with 3D rendering for VR/3D Screens/3D Monitors. Currently Only Supports Full-SBS Image Rendering. Star :star: this repo so you will be notified when it is updated.
 
-You can get yourself a copy from the Release section for Stable Downloads.
+You can get yourself a copy from the Release section for Stable Downloads. 
 
 ## Description
 ![Preview](https://github.com/SatyamSSJ10/Camera3D/blob/main/Previews/Docs.png)
@@ -28,3 +28,6 @@ Copy Camera Transform:
 
 Camera3D helper:
 > Links to this repo in case some issue arises or you need to read this again.
+
+## Usage
+Just select 3D from the Settings, set your wanted resolutions etc. and Apply Settings. Next Setup camera. You can copy location of other cameras if you want. Render :anatomical_heart:
