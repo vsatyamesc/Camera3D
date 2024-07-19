@@ -29,5 +29,8 @@ Copy Camera Transform:
 Camera3D helper:
 > Links to this repo in case some issue arises or you need to read this again.
 
+You might ask?
+> what about Focal Length? Well the effect of Focal length can be studied here http://www.photographers-resource.co.uk/photography/3D/3D_stereo_base.htm
+> I will add focal length change in later updates.
 ## Usage
 Just select 3D from the Settings, set your wanted resolutions etc. and Apply Settings. Next Setup camera. You can copy location of other cameras if you want. Render :anatomical_heart:
