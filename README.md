@@ -19,7 +19,7 @@ IPD Value:
 > IPD is the distance between your Pupil in millimeters. It is set to create an illusion of depth in the eyes.
 
 Environment Setup:
-> After clicking "Setup Camera" The addon will add two cameras on the origin. and the Left and Right cameras will be hidden in Viewport, no need to enable those.
+> After clicking "Setup Camera" The addon will add 3 cameras on the origin. and the Left and Right cameras will be hidden in Viewport, no need to enable those.
 > Do not change the Active Camera in the Scene. If you've changed, set the Active Camera to "Camera3D_L" in the "Camera3D" Collection.
 > "Camera3D" is the main camera. You need to move this camera only, the other camera will follow its position.
 
