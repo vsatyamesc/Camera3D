@@ -7,6 +7,7 @@ bl_info = {
     "version": (0,1,0),
     "author": "Satyam",
     "description":"This addon is used to setup 3D camera space so you can render actual 3D within Blender. Currently only supports Full-SBS Mode. Planning to Add Half-SBS and 180 L/R VR. You can use Quest,Vive,Google Cardboard or any other VR to see the renders in 3D"
+    "docs": "https://github.com/vsatyamesc/Camera3D"
 }
 
 import bpy
