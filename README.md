@@ -18,6 +18,11 @@ IPD Value:
 > This is the tricky one. leave 65.0 if you do not understand the next line.
 > IPD is the distance between your Pupil in millimeters. It is set to create an illusion of depth in the eyes.
 
+Set Lens Type:
+> There are 3 options to set. *180v1, 180v2, FLAT*.
+> If you want 180 SBS render then choose either of these.
+> If you want Diorama like 3D render choose FLAT
+
 Environment Setup:
 > After clicking "Setup Camera" The addon will add 3 cameras on the origin. and the Left and Right cameras will be hidden in Viewport, no need to enable those.
 > Do not change the Active Camera in the Scene. If you've changed, set the Active Camera to "Camera3D_L" in the "Camera3D" Collection.
