@@ -59,4 +59,37 @@ def set_mode(self, context):
     set_3d_mode(self, context)
   else:
     set_2d_mode(self, context)
+
+def return_cameras():
+  cameras = ["Camera3D","Camera3D_L", "Camera3D_R"]
+  camera_ = [bpy.data.cameras.get(x) for x in cameras]
+
+  if None in camera_:
+    raise "Camera couldn't be found, Recreate the Camera, This shouldn't happend unless you did something."
+    return 
+
+  return camera_
+
+def set_lens_type(self, context):
+  lens_type = str(bpy.context.scene.LensType)
+  ocs = return_cameras()
+  if lens_type == "PANO1":
+    for cam in ocs:
+      cam.type = "PANO"
+      cam.panorama_type = "FISHEYE_EQUISOLID"
+      cam.fisheye_lens = 15
+      cam.fisheye_fov = 22/7
+  elif lens_type == "PANO2":
+    for cam in ocs:
+      cam.type = "PANO"
+      cam.panorama_type = "FISHEYE_LENS_POLYNOMIAL"
+      #cam.fisheye_lens = 15
+      cam.fisheye_fov = 22/7
+  elif lens_type == "PERSP":
+    for cam in ocs:
+      cam.type = "PERSP"
+      cam.lens = 50
+  
+
+
   

@@ -16,18 +16,20 @@ class Camera3DPanel(bpy.types.Panel):
 
         box0 = layout.box()
         box0.label(text="Settings")
-        box0_row00 = box0.row()
-        box0_row0 = box0.row()
-        box0_row1 = box0.row()
-        box0_row2 = box0.row()
-        box0_row01 = box0.row()
-        box0_row3 = box0.row()
+        box0_row00 = box0.row() # 2D/3D
+        box0_row0 = box0.row() # Resolution
+        box0_row1 = box0.row() # Samples
+        box0_row2 = box0.row() # IPD
+        box0_row01 = box0.row() # Engine
+        box0_row02 = box0.row() # FLAT / FISHEYE LENS TYPE
+        box0_row3 = box0.row() # Apply Settings
         box0_row00.prop(scene, "CameraMode", expand = True)
         box0_row01.prop(scene,"RenderEngine",expand=True)
         box0_row0.prop(scene,"camera_resolution", text="Resolution")
         box0_row1.prop(scene,"samples_value",text="Set Samples")
         box0_row2.prop(scene,"IPD_value",text="Set IPD Value")
         box0_row3.operator("base_operator.apply_settings", text="Apply Settings")
+        box0_row02.prop(scene,"LensType", text="Set Lens Type")
         box0_row2.enabled = False
         if scene.CameraMode == "3D" and "Camera3D" not in bpy.data.objects:
             box0_row2.enabled = True
@@ -74,6 +76,6 @@ class Camera3DHelper(bpy.types.Panel):
         row = layout.row()
         col = row.column()
         docs = col.operator("wm.url_open", text="Documentation", icon="HELP")
-        docs.url = "https://github.com/SatyamSSJ10/Camera3D"        
+        docs.url = "https://github.com/vsatyamesc/Camera3D"        
         error = col.operator("wm.url_open", text="Report Issue", icon="GREASEPENCIL")
-        error.url = "https://github.com/SatyamSSJ10/Camera3D/issues"
+        error.url = "https://github.com/vsatyamesc/Camera3D/issues"

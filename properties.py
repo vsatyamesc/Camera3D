@@ -25,6 +25,8 @@ def register():
 
     bpy.types.Scene.RenderEngine = EnumProperty(name="Render Engine", default=1, items=[("BLENDER_EEVEE","EEVEE","",1), ("CYCLES","CYCLES","",2)], update=callbacks.set_render_engine)
 
+    bpy.types.Scene.LensType = EnumProperty(name="Camera Lens", default=1, items=[("PANO1","180v1","",1),("PANO2","180v2","",2), ("PERSP","FLAT","",3)], update=callbacks.set_lens_type)
+
 def unregister():
     bpy.utils.unregister_class(CameraSelector)
     del bpy.types.Scene.camera_resolution
@@ -33,3 +35,4 @@ def unregister():
     del bpy.types.Scene.object_selector_props
     del bpy.types.Scene.CameraMode
     del bpy.types.Scene.RenderEngine
+    del bpy.types.Scene.LensType
