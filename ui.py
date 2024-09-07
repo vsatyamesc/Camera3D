@@ -29,7 +29,7 @@ class Camera3DPanel(bpy.types.Panel):
         box0_row1.prop(scene,"samples_value",text="Set Samples")
         box0_row2.prop(scene,"IPD_value",text="Set IPD Value")
         box0_row3.operator("base_operator.apply_settings", text="Apply Settings")
-        box0_row02.prop(scene,"LensType", text="Set Lens Type")
+        
         box0_row2.enabled = False
         if scene.CameraMode == "3D" and "Camera3D" not in bpy.data.objects:
             box0_row2.enabled = True
@@ -44,11 +44,20 @@ class Camera3DSetup(bpy.types.Panel):
     def draw(self, context):
         layout = self.layout
         scene = context.scene
+        
         box0 = layout.box()
         box0.label(text="Environment Setup")
         box0_row0 = box0.row()
         box0_row0.operator("base_operator.add_camera_lr", text="Setup Camera")
-        
+
+        box2 = layout.box()
+        box2.label(text="Lens Setup")
+        box2_row1 = box2.row()
+        box2_row1.prop(scene,"LensType")
+        box2_row1.enabled = False
+        if "Camera3D" in bpy.data.objects:
+            box2_row1.enabled = True
+
         box1 = layout.box()
         box1.label(text="Copy Camera Transform")
         box1_row0 = box1.row()
