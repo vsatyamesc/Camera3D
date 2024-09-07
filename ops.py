@@ -1,6 +1,7 @@
 import bpy
 from . import function
 from .callbacks import set_resolution, set_samples, set_mode
+
 class OTCameraSetup(bpy.types.Operator):
   """This will add the Neccessary Camera Setup to your Blend Scene"""
   bl_idname = "base_operator.add_camera_lr"
