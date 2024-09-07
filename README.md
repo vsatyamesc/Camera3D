@@ -4,7 +4,7 @@ A Blender Addon to assist you with 3D rendering for VR/3D Screens/3D Monitors. C
 You can get yourself a copy from the Release section for Stable Downloads. 
 
 ## Description
-![Preview](https://github.com/SatyamSSJ10/Camera3D/blob/main/Previews/Docs.png)
+![Preview](https://github.com/SatyamSSJ10/Camera3D/blob/main/Previews/Docs1.png)
 
 The settings are elementary. Set the Mode 2D/3D, you have to set 3D, I've added 2D for future update reasons
 
