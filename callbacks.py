@@ -1,4 +1,9 @@
 import bpy
+from .function import displace_camera
+def show_message_box(msg="", title="Message Box", icon="INFO"):
+  def draw(self, context):
+            self.layout.label(text=msg)
+  bpy.context.window_manager.popup_menu(draw, title = title, icon = icon)
 
 def set_render_engine(self, context):
   engine = str(bpy.context.scene.RenderEngine)
@@ -35,9 +40,21 @@ def set_resolution(self, context):
   scene.render.resolution_x = x
   scene.render.resolution_y = y
 
+def set_ipd(self, context):
+    bpy.data.cameras["Camera"].stereo.interocular_distance = float(bpy.context.scene.IPD_value)/1000
+
+    camera_list = ["Camera3D", "Camera3D_R","Camera3D_L"]
+    camera_objs = [bpy.data.cameras.get(name=x) for x in camera_list]
+
+    if None in camera_objs:
+      return
+    
+    displace_camera(camera_objs[1], float(bpy.context.scene.IPD_value)/2000)
+    displace_camera(camera_objs[2], - float(bpy.context.scene.IPD_value)/2000)
+
 def set_3d_mode(self, context):
   set_render_engine(self, context)
-  format="MULTIVIEW"
+  format= str(bpy.context.scene.ViewMode)
   scene = bpy.data.scenes["Scene"]
   render = scene.render
   render.use_multiview = True
@@ -65,14 +82,16 @@ def return_cameras():
   camera_ = [bpy.data.cameras.get(x) for x in cameras]
 
   if None in camera_:
-    raise "Camera couldn't be found, Recreate the Camera, This shouldn't happend unless you did something."
-    return 
+    show_message_box(msg="1 or more camera couldn't be found; Recreate the Camera. This shouldn't happend unless you did something.")
+    return None
 
   return camera_
 
 def set_lens_type(self, context):
   lens_type = str(bpy.context.scene.LensType)
   ocs = return_cameras()
+  active_camera = bpy.data.cameras.get(bpy.context.scene.camera.name)
+  scene_render_settings = bpy.data.scenes["Scene"].render.views_format
   if lens_type == "PANO1":
     for cam in ocs:
       cam.type = "PANO"
@@ -89,6 +108,15 @@ def set_lens_type(self, context):
     for cam in ocs:
       cam.type = "PERSP"
       cam.lens = 50
+  elif lens_type == "PARALLEL":
+    active_camera.stereo.convergence_mode = "PARALLEL"
+    pass
+  elif lens_type == "TOE-IN":
+    active_camera.stereo.convergence_mode = "TOE"
+    pass
+  elif lens_type == "OFF-AXIS":
+    active_camera.stereo.convergence_mode = "OFFAXIS"
+    pass
   
 
 

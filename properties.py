@@ -17,15 +17,17 @@ def register():
 
     bpy.types.Scene.samples_value = IntProperty(name="Samples", default=4096, min=512, max=4096, update=callbacks.set_samples)
 
-    bpy.types.Scene.IPD_value = FloatProperty(name="IPD", description="Distance between your Iris at default position, usually 65 for teen/adults, usually ranges from 61-68 for average person. \nNote: Once this is set and Camera is added, you can't change the IPD again", default=65.0, min=58.0, max=72.0, soft_min=61.0, soft_max=68.0)
+    bpy.types.Scene.IPD_value = FloatProperty(name="IPD", description="Distance between your Iris at default position, usually 65 for teen/adults, usually ranges from 61-68 for average person. \nNote: Once this is set and Camera is added, you can't change the IPD again", default=65.0, min=58.0, max=72.0, soft_min=61.0, soft_max=68.0, update=callbacks.set_ipd)
 
     bpy.types.Scene.object_selector_props = PointerProperty(type=CameraSelector)
 
     bpy.types.Scene.CameraMode = EnumProperty(name="Mode", default=1, items=[("2D","2D","",1), ("3D","3D","",2)], update=callbacks.set_mode)
 
+    bpy.types.Scene.ViewMode = EnumProperty(name="View Mode", default=1, items=[("MULTIVIEW","Multi View","",1), ("STEREO_3D","Stereo 3D","",2)], description="Set View Mode, usually Stereo 3D means L/R camera, Multiview means multiple camera setup")
+
     bpy.types.Scene.RenderEngine = EnumProperty(name="Render Engine", default=1, items=[("BLENDER_EEVEE","EEVEE","",1), ("CYCLES","CYCLES","",2)], update=callbacks.set_render_engine)
 
-    bpy.types.Scene.LensType = EnumProperty(name="Camera Lens", default=1, items=[("PANO1","180v1","",1),("PANO2","180v2","",2), ("PERSP","FLAT","",3)], update=callbacks.set_lens_type)
+    bpy.types.Scene.LensType = EnumProperty(name="Camera Lens", default=1, items=[("PANO1","180v1","",1),("PANO2","180v2","",2), ("PERSP","FLAT","",3), ("PARALLEL","LANDSCAPE","",4),("TOE-IN","OBJECT FOCUS","",5),("OFF-AXIS","HYBRID","",6)], update=callbacks.set_lens_type)
 
 def unregister():
     bpy.utils.unregister_class(CameraSelector)
@@ -34,5 +36,6 @@ def unregister():
     del bpy.types.Scene.IPD_value
     del bpy.types.Scene.object_selector_props
     del bpy.types.Scene.CameraMode
+    del bpy.types.Scene.ViewMode
     del bpy.types.Scene.RenderEngine
     del bpy.types.Scene.LensType

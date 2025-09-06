@@ -20,19 +20,26 @@ class Camera3DPanel(bpy.types.Panel):
         box0_row0 = box0.row() # Resolution
         box0_row1 = box0.row() # Samples
         box0_row2 = box0.row() # IPD
-        box0_row01 = box0.row() # Engine
-        box0_row02 = box0.row() # FLAT / FISHEYE LENS TYPE
+        box0_row01 = box0.row() # View Format
+        box0_row02 = box0.row() # Engine
+        box0_row03 = box0.row() # FLAT / FISHEYE LENS TYPE
         box0_row3 = box0.row() # Apply Settings
         box0_row00.prop(scene, "CameraMode", expand = True)
-        box0_row01.prop(scene,"RenderEngine",expand=True)
+        box0_row01.prop(scene,"ViewMode",expand=True)
+        box0_row02.prop(scene,"RenderEngine",expand=True)
         box0_row0.prop(scene,"camera_resolution", text="Resolution")
         box0_row1.prop(scene,"samples_value",text="Set Samples")
         box0_row2.prop(scene,"IPD_value",text="Set IPD Value")
         box0_row3.operator("base_operator.apply_settings", text="Apply Settings")
-        box0_row02.prop(scene,"LensType", text="Set Lens Type")
-        box0_row2.enabled = False
-        if scene.CameraMode == "3D" and "Camera3D" not in bpy.data.objects:
+        box0_row03.prop(scene,"LensType", text="Set Lens Type")
+        
+        if scene.CameraMode == "3D":
             box0_row2.enabled = True
+            box0_row01.enabled = True
+        else:
+            box0_row2.enabled = False
+            box0_row01.enabled = False
+
 
 class Camera3DSetup(bpy.types.Panel):
     bl_label = "Camera3D Setup"
